@@ -37,7 +37,7 @@ function App() {
   }, [prizes, questionNumber]);
 
   const handelRestart = () => {
-    window.location="/"
+    window.location.reload()
   }
   return (
     <div className="App">
