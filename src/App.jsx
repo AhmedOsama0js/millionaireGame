@@ -37,8 +37,8 @@ function App() {
   }, [prizes, questionNumber]);
 
   const handelRestart = () => {
-    window.location.reload()
-  }
+    window.location.reload();
+  };
   return (
     <div className="App">
       {userName ? (
@@ -47,7 +47,9 @@ function App() {
             {stopWatch || questionNumber === 16 ? (
               <>
                 <h1 className="endText">{moneyWin} : لقد ربحت</h1>
-                <button className ="playAgainButton" onClick={handelRestart}>Play Again</button>
+                <button className="playAgainButton" onClick={handelRestart}>
+                  Play Again
+                </button>
               </>
             ) : (
               <>
