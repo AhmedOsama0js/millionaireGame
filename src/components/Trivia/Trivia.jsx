@@ -7,6 +7,7 @@ import correct from "../../assets/sound/src_sounds_correct (2).mp3";
 import wrong from "../../assets/sound/src_sounds_wrong.mp3";
 
 const Trivia = ({ questionNumber, setQuestionNumber, setStopWatch }) => {
+  const [stopClick,setStopClick]= useState(true)
   const [question, setQuestion] = useState(null);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [className, setClassName] = useState("Answer");
@@ -30,8 +31,11 @@ useEffect(() => {
   };
 
   const handelClick = (a) => {
-
-    setSelectedAnswer(a);
+    if (!stopClick) {
+    return
+    } else {
+      setStopClick(false)
+      setSelectedAnswer(a);
     setClassName("answer active");
     delay(1000, () =>
       setClassName(
@@ -44,6 +48,7 @@ useEffect(() => {
       delay(1000, () => {
         setQuestionNumber((prev) => prev + 1)
         setSelectedAnswer(null)
+        setStopClick(true)
       })
       } else {
         wrongAnswers()
@@ -51,6 +56,7 @@ useEffect(() => {
       }
     }
     );
+  }
   };
 
   return (
